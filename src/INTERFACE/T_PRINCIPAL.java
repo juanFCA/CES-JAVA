@@ -6,6 +6,7 @@
 package INTERFACE;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -73,6 +74,11 @@ public class T_PRINCIPAL extends javax.swing.JFrame {
         mnisair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
         mnisair.setMnemonic('s');
         mnisair.setText("Sair");
+        mnisair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnisairActionPerformed(evt);
+            }
+        });
         mncadastro.add(mnisair);
 
         BarraMenu.add(mncadastro);
@@ -116,6 +122,13 @@ public class T_PRINCIPAL extends javax.swing.JFrame {
     private void mniprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniprodutoActionPerformed
         new produto(null,true).setVisible(true);
     }//GEN-LAST:event_mniprodutoActionPerformed
+
+    private void mnisairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnisairActionPerformed
+        // TODO add your handling code here:
+        int status = JOptionPane.showConfirmDialog(null, "Deseja realmente sair da Aplicação", "Fechar Aplicação", JOptionPane.YES_NO_OPTION);
+        if(status == JOptionPane.YES_OPTION)
+            System.exit(0);
+    }//GEN-LAST:event_mnisairActionPerformed
 
     /**
      * @param args the command line arguments
