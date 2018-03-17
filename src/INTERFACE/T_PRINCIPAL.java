@@ -116,11 +116,11 @@ public class T_PRINCIPAL extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniclienteActionPerformed
-        new cliente(null,true).setVisible(true);   
+        new Cliente(null,true).setVisible(true);   
     }//GEN-LAST:event_mniclienteActionPerformed
 
     private void mniprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniprodutoActionPerformed
-        new produto(null,true).setVisible(true);
+        new Produto(null,true).setVisible(true);
     }//GEN-LAST:event_mniprodutoActionPerformed
 
     private void mnisairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnisairActionPerformed
