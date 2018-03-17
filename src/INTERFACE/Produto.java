@@ -72,7 +72,7 @@ public class Produto extends javax.swing.JDialog {
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblCodigo.setText("Descrição:");
-        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 70, -1));
+        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, -1));
         getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 130, -1));
 
         lblNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -83,7 +83,7 @@ public class Produto extends javax.swing.JDialog {
         lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDescricao.setText("Nome:");
         getContentPane().add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 50, -1));
-        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 330, -1));
+        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 320, -1));
 
         lblPreco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPreco.setText("Preço:");
@@ -125,7 +125,7 @@ public class Produto extends javax.swing.JDialog {
                 btnExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 70, -1));
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 70, -1));
 
         btnAtualizar.setMnemonic('A');
         btnAtualizar.setText("Atualizar");
@@ -135,7 +135,7 @@ public class Produto extends javax.swing.JDialog {
                 btnAtualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 80, -1));
+        getContentPane().add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 80, -1));
 
         btnPesquisar.setMnemonic('P');
         btnPesquisar.setText("Pesquisar");
@@ -145,7 +145,7 @@ public class Produto extends javax.swing.JDialog {
                 btnPesquisarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
+        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
 
         btnSair.setMnemonic('R');
         btnSair.setText("Sair");
@@ -156,7 +156,7 @@ public class Produto extends javax.swing.JDialog {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 380, 50, -1));
+        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 380, 60, -1));
 
         scrollPaneTabela.setAutoscrolls(true);
 
