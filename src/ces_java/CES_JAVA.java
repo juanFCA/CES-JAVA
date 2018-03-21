@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author alunoces
+ * @author Jonas
  */
 public class CES_JAVA {
 
@@ -21,11 +21,11 @@ public class CES_JAVA {
     public static void main(String[] args) {
         // TODO code application logic here
         try{
-            JOptionPane.showMessageDialog(null, "Testando Conexão");
-            Connection con = new ConnectionFactory().conecta();
-            JOptionPane.showMessageDialog(null, "Conexão Realizada com Sucesso");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro:" + e);
+            JOptionPane.showMessageDialog(null, "Testando a conexão");
+            Connection con =  new ConnectionFactory().conecta();
+            JOptionPane.showMessageDialog(null,"Conexão realizada com sucesso");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Erro" + e);
         }
     }
     

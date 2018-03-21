@@ -13,20 +13,20 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author alunoces
+ * @author Jonas
  */
 public class Produto extends javax.swing.JDialog {
-    
+
     ProdutoDao dao;
     /**
-     * Creates new form produto
+     * Creates new form Produto
      */
     public Produto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);//Centraliza a tela ao abrir
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,29 +36,30 @@ public class Produto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        lblCodigo = new javax.swing.JLabel();
+        lblPreco = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        lblCodigo = new javax.swing.JLabel();
+        txtPreco = new javax.swing.JTextField();
         lblDescricao = new javax.swing.JLabel();
         txtDescricao = new javax.swing.JTextField();
-        lblPreco = new javax.swing.JLabel();
-        txtPreco = new javax.swing.JTextField();
-        btnNovo = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnAtualizar = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
-        scrollPaneTabela = new javax.swing.JScrollPane();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        btSalvar = new javax.swing.JButton();
+        btNovo = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btAtualizar = new javax.swing.JButton();
+        btPesquisar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
+        scrTabela = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de Produto");
-        setMinimumSize(new java.awt.Dimension(460, 460));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(460, 460));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -66,99 +67,106 @@ public class Produto extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(153, 153, 153));
         lblTitulo.setText("TELA DE PRODUTO");
-        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-        lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblCodigo.setText("Descrição:");
-        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 80, -1));
-        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 130, -1));
+        lblPreco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPreco.setText("Preço....:");
+        getContentPane().add(lblPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
-        lblNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblNome.setText("Código:");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 350, -1));
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 130, -1));
 
-        lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblDescricao.setText("Nome:");
-        getContentPane().add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 50, -1));
-        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 320, -1));
-
-        lblPreco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblPreco.setText("Preço:");
-        getContentPane().add(lblPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCodigo.setText("Código...:");
+        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 140, -1));
+        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 80, -1));
 
-        btnNovo.setMnemonic('N');
-        btnNovo.setText("Novo");
-        btnNovo.setMaximumSize(new java.awt.Dimension(60, 25));
-        btnNovo.setMinimumSize(new java.awt.Dimension(60, 25));
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+        lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDescricao.setText("Descrição:");
+        getContentPane().add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
+                txtDescricaoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 60, -1));
+        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 290, -1));
 
-        btnSalvar.setMnemonic('S');
-        btnSalvar.setText("Salvar");
-        btnSalvar.setMinimumSize(new java.awt.Dimension(60, 25));
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        lblNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblNome.setText("Nome....:");
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 290, -1));
 
-        btnExcluir.setMnemonic('E');
-        btnExcluir.setLabel("Excluir");
-        btnExcluir.setMinimumSize(new java.awt.Dimension(60, 25));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btSalvar.setMnemonic('s');
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 70, -1));
+        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
-        btnAtualizar.setMnemonic('A');
-        btnAtualizar.setText("Atualizar");
-        btnAtualizar.setMinimumSize(new java.awt.Dimension(60, 25));
-        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+        btNovo.setMnemonic('N');
+        btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarActionPerformed(evt);
+                btNovoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 80, -1));
+        getContentPane().add(btNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
-        btnPesquisar.setMnemonic('P');
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setMinimumSize(new java.awt.Dimension(60, 25));
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btExcluir.setMnemonic('e');
+        btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
+                btExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
+        getContentPane().add(btExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
 
-        btnSair.setMnemonic('R');
-        btnSair.setText("Sair");
-        btnSair.setMaximumSize(new java.awt.Dimension(55, 23));
-        btnSair.setMinimumSize(new java.awt.Dimension(55, 25));
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btAtualizar.setMnemonic('a');
+        btAtualizar.setText("Atualizar");
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btAtualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 380, 60, -1));
+        getContentPane().add(btAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
 
-        scrollPaneTabela.setAutoscrolls(true);
+        btPesquisar.setMnemonic('p');
+        btPesquisar.setText("Pesquisar");
+        getContentPane().add(btPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+
+        btSair.setMnemonic('r');
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
+
+        scrTabela.setAutoscrolls(true);
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,19 +181,32 @@ public class Produto extends javax.swing.JDialog {
                 tabelaMouseClicked(evt);
             }
         });
-        scrollPaneTabela.setViewportView(tabela);
+        scrTabela.setViewportView(tabela);
 
-        getContentPane().add(scrollPaneTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 420, 170));
+        getContentPane().add(scrTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecoActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        try {
+    private void txtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescricaoActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        // TODO add your handling code here:
+        try{
             Produtos obj = new Produtos();
             obj.setNome(txtNome.getText());
             obj.setDescricao(txtDescricao.getText());
@@ -194,49 +215,72 @@ public class Produto extends javax.swing.JDialog {
             dao = new ProdutoDao();
             dao.cadastrarProduto(obj);
             
-            JOptionPane.showMessageDialog(null, "Cadastro realizado com Sucesso");
-            
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o Produto");
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto");
         }
-        
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_btSalvarActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    }//GEN-LAST:event_btNovoActionPerformed
 
-    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAtualizarActionPerformed
+        try {
+            Produtos obj = new Produtos();
+            
+            obj.setNome(txtNome.getText());
+            obj.setDescricao(txtDescricao.getText());
+            obj.setPreco(Float.parseFloat(txtPreco.getText()));
+            obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            
+            dao = new ProdutoDao();
+            dao.alterarProduto(obj);
+            
+            JOptionPane.showMessageDialog(null, "Dados alterados com Sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar o Produto");
+        }
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNovoActionPerformed
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-        int status = JOptionPane.showConfirmDialog(null, "Deseja realmente sair da Janela", "Fechar Janela", JOptionPane.YES_NO_OPTION);
-        if(status == JOptionPane.YES_OPTION)
-            dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+        int status = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Fechar", JOptionPane.YES_NO_OPTION);
+        if(status==JOptionPane.YES_OPTION){
+           dispose();//sai da tela
+        }
+    }//GEN-LAST:event_btSairActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        Listar();
+        listar();
     }//GEN-LAST:event_formWindowActivated
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         // TODO add your handling code here:
+        //Preenche as caixas de texto com os valores da linha selecionada
         txtCodigo.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         txtNome.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
         txtDescricao.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
         txtPreco.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
     }//GEN-LAST:event_tabelaMouseClicked
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        // TODO add your handling code here:
+        try {
+            Produtos obj = new Produtos();
+            
+            obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
+            
+            dao = new ProdutoDao();
+            dao.excluirProduto(obj);
+        
+            JOptionPane.showMessageDialog(null,"Dados Excluidos com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir o Produto");
+        }
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,7 +308,6 @@ public class Produto extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -282,18 +325,19 @@ public class Produto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtualizar;
-    private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btAtualizar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btNovo;
+    private javax.swing.JButton btPesquisar;
+    private javax.swing.JButton btSair;
+    private javax.swing.JButton btSalvar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblPreco;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JScrollPane scrollPaneTabela;
+    private javax.swing.JScrollPane scrTabela;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
@@ -301,24 +345,27 @@ public class Produto extends javax.swing.JDialog {
     private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
 
-    public void Listar() {
-        try {
+    
+    //Métodos da classe
+    public void listar(){
+        try{
             dao = new ProdutoDao();
-            List<Produtos> listarprodutos = dao.listarProdutos();
+            List<Produtos> listarProdutos = dao.listarProdutos();
             DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
             modelo.setNumRows(0);
             
-            for (Produtos lp : listarprodutos) {
+            for(Produtos lp : listarProdutos){
                 modelo.addRow(new Object[]{
-                    lp.getCodigo(),
-                    lp.getNome(),
-                    lp.getDescricao(),
-                    lp.getPreco()
+                   lp.getCodigo(),
+                   lp.getNome(),
+                   lp.getDescricao(),
+                   lp.getPreco()
                 });
             }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Erro ao carregar lista de Produtos");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao listar produto");
         }
     }
+    
+    
 }
