@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     public Connection conecta(){
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/cesjf","root","ACADEMICO");//"" - Senha do Banco de dados
+            return DriverManager.getConnection("jdbc:mysql://localhost/cesjf","root","");//"" - Senha do Banco de dados
         } catch (SQLException ex){
             throw new RuntimeException(ex);
         }

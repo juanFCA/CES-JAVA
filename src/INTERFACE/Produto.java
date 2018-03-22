@@ -77,6 +77,7 @@ public class Produto extends javax.swing.JDialog {
         lblPreco.setText("Preço....:");
         getContentPane().add(lblPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
+        txtCodigo.setEnabled(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
