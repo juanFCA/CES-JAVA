@@ -74,7 +74,7 @@ public class Produto extends javax.swing.JDialog {
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         lblPreco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPreco.setText("Preço....:");
+        lblPreco.setText("Preço......:");
         getContentPane().add(lblPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         txtCodigo.setEnabled(false);
@@ -83,10 +83,10 @@ public class Produto extends javax.swing.JDialog {
                 txtCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 130, -1));
+        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 130, -1));
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblCodigo.setText("Código...:");
+        lblCodigo.setText("Código....:");
         getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         txtPreco.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +94,7 @@ public class Produto extends javax.swing.JDialog {
                 txtPrecoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 80, -1));
+        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 80, -1));
 
         lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDescricao.setText("Descrição:");
@@ -105,10 +105,10 @@ public class Produto extends javax.swing.JDialog {
                 txtDescricaoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 290, -1));
+        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 290, -1));
 
         lblNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblNome.setText("Nome....:");
+        lblNome.setText("Nome......:");
         getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class Produto extends javax.swing.JDialog {
                 txtNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 290, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 290, -1));
 
         btSalvar.setMnemonic('s');
         btSalvar.setText("Salvar");
