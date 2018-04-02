@@ -27,6 +27,10 @@ public class Fornecedor extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
+    Fornecedor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +69,11 @@ public class Fornecedor extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
@@ -173,9 +182,14 @@ public class Fornecedor extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Nome", "Telefone", "Rua", "Número", "Bairro", "Cidade", "UF"
+                "Código", "Nome", "Telefone", "Rua", "Número", "Bairro", "Cidade", "UF"
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         scrPanel.setViewportView(tabela);
 
         getContentPane().add(scrPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 470, 160));
@@ -294,7 +308,7 @@ public class Fornecedor extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
-    private void listarTodos() {
+    private void listar() {
         try {
             dao = new FornecedorDao();
             List<Fornecedores> listarFornecedores = dao.listarFornecedores();
@@ -304,6 +318,7 @@ public class Fornecedor extends javax.swing.JDialog {
             
             for(Fornecedores lf : listarFornecedores) {
                 modelo.addRow(new Object[]{
+                    lf.getId(),
                     lf.getNome(),
                     lf.getTelefone(),
                     lf.getRua(),
@@ -313,8 +328,7 @@ public class Fornecedor extends javax.swing.JDialog {
                     lf.getUf()
                 });
             }
-            
-            
+                        
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao listar Fornecedores");
         }
@@ -327,6 +341,23 @@ public class Fornecedor extends javax.swing.JDialog {
             dispose();
         }
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        listar();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        // TODO add your handling code here:
+        txtCodigo.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+        txtNome.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+        txtTelefone.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+        txtRua.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+        txtNumero.setText(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
+        txtBairro.setText(tabela.getValueAt(tabela.getSelectedRow(), 5).toString());
+        txtCidade.setText(tabela.getValueAt(tabela.getSelectedRow(), 6).toString());
+        txtUF.setText(tabela.getValueAt(tabela.getSelectedRow(), 7).toString());
+    }//GEN-LAST:event_tabelaMouseClicked
 
     /**
      * @param args the command line arguments

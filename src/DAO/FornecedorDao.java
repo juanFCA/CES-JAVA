@@ -66,7 +66,9 @@ public class FornecedorDao {
                 f.setBairro(rs.getString("for_bairro"));
                 f.setCidade(rs.getString("for_cidade"));
                 f.setUf(rs.getString("for_uf"));
+                f.setTelefone(rs.getString("for_telefone"));
                 
+                lista.add(f);
             }
             
             return lista;
@@ -101,7 +103,7 @@ public class FornecedorDao {
     
     public void excluirFornecedor(Fornecedores obj) {
         try {
-            cmdsql = "DELETE * FROM fornecedor WHERE for_id=?";
+            cmdsql = "DELETE FROM fornecedor WHERE for_id=?";
             stmt = conecta.prepareStatement(cmdsql);
             
             stmt.setInt(1, obj.getId());

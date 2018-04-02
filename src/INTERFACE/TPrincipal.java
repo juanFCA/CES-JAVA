@@ -37,6 +37,7 @@ public class TPrincipal extends javax.swing.JFrame {
         mncadastro = new javax.swing.JMenu();
         mnicliente = new javax.swing.JMenuItem();
         mniproduto = new javax.swing.JMenuItem();
+        mnifornecedor = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnisair = new javax.swing.JMenuItem();
         mnpesquisa = new javax.swing.JMenu();
@@ -61,6 +62,7 @@ public class TPrincipal extends javax.swing.JFrame {
         mncadastro.add(mnicliente);
 
         mniproduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        mniproduto.setMnemonic('p');
         mniproduto.setText("Produto");
         mniproduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +70,16 @@ public class TPrincipal extends javax.swing.JFrame {
             }
         });
         mncadastro.add(mniproduto);
+
+        mnifornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
+        mnifornecedor.setMnemonic('f');
+        mnifornecedor.setText("Fornecedor");
+        mnifornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnifornecedorActionPerformed(evt);
+            }
+        });
+        mncadastro.add(mnifornecedor);
         mncadastro.add(jSeparator1);
 
         mnisair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
@@ -142,6 +154,11 @@ public class TPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnisairActionPerformed
 
+    private void mnifornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnifornecedorActionPerformed
+        // TODO add your handling code here:
+        new Fornecedor(null, true).setVisible(true);
+    }//GEN-LAST:event_mnifornecedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,6 +201,7 @@ public class TPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mncadastro;
     private javax.swing.JMenu mncliente;
     private javax.swing.JMenuItem mnicliente;
+    private javax.swing.JMenuItem mnifornecedor;
     private javax.swing.JMenuItem mniproduto;
     private javax.swing.JMenuItem mnisair;
     private javax.swing.JMenu mnpesquisa;
