@@ -6,6 +6,7 @@
 package DAO;
 
 import JAVABEANS.Fornecedores;
+import JDBC.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,8 +24,8 @@ public class FornecedorDao {
     private PreparedStatement stmt;
     private String cmdsql;
 
-    public FornecedorDao(Connection conecta) {
-        this.conecta = conecta;
+    public FornecedorDao() {
+        this.conecta = new ConnectionFactory().conecta();
     }
     
     public void CadastrarFornecedor(Fornecedores obj) {

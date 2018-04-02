@@ -5,18 +5,26 @@
  */
 package INTERFACE;
 
+import DAO.FornecedorDao;
+import JAVABEANS.Fornecedores;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juan
  */
 public class Fornecedor extends javax.swing.JDialog {
 
+    FornecedorDao dao;
     /**
      * Creates new form Fornecedor
      */
     public Fornecedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -223,6 +231,24 @@ public class Fornecedor extends javax.swing.JDialog {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         // TODO add your handling code here:
+        try {
+            Fornecedores obj = new Fornecedores();
+            
+            obj.setNome(txtNome.getText());
+            obj.setTelefone(txtTelefone.getText());
+            obj.setRua(txtRua.getText());
+            obj.setNumero(Integer.parseInt(txtNumero.getText()));
+            obj.setBairro(txtBairro.getText());
+            obj.setCidade(txtCidade.getText());
+            obj.setUf(txtUF.getText());
+            
+            dao = new FornecedorDao();
+            dao.CadastrarFornecedor(obj);
+            
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com Sucesso");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar o Fornecedor");
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
@@ -231,14 +257,75 @@ public class Fornecedor extends javax.swing.JDialog {
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         // TODO add your handling code here:
+        try {
+            Fornecedores obj = new Fornecedores();
+            
+            obj.setNome(txtNome.getText());
+            obj.setTelefone(txtTelefone.getText());
+            obj.setRua(txtRua.getText());
+            obj.setNumero(Integer.parseInt(txtNumero.getText()));
+            obj.setBairro(txtBairro.getText());
+            obj.setCidade(txtCidade.getText());
+            obj.setUf(txtUF.getText());
+            obj.setId(Integer.parseInt(txtCodigo.getText()));
+              
+            dao = new FornecedorDao();
+            dao.alterarFornecedor(obj);
+                    
+            JOptionPane.showMessageDialog(null, "Dados Atualizados com sucesso");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Atualizar o Fornecedor");
+        }
     }//GEN-LAST:event_btAtualizarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
+        try {
+            Fornecedores obj = new Fornecedores();
+            
+            obj.setId(Integer.parseInt(txtCodigo.getText()));
+              
+            dao = new FornecedorDao();
+            dao.excluirFornecedor(obj);
+                    
+            JOptionPane.showMessageDialog(null, "Dados Excluidos com sucesso");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir o Fornecedor");
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
+    private void listarTodos() {
+        try {
+            dao = new FornecedorDao();
+            List<Fornecedores> listarFornecedores = dao.listarFornecedores();
+            
+            DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+            modelo.setNumRows(0);
+            
+            for(Fornecedores lf : listarFornecedores) {
+                modelo.addRow(new Object[]{
+                    lf.getNome(),
+                    lf.getTelefone(),
+                    lf.getRua(),
+                    lf.getNumero(),
+                    lf.getBairro(),
+                    lf.getCidade(),
+                    lf.getUf()
+                });
+            }
+            
+            
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao listar Fornecedores");
+        }
+    } 
+    
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // TODO add your handling code here:
+        int status = JOptionPane.showConfirmDialog(null, "Deseja Realmente Sair", "Fechar", JOptionPane.YES_NO_OPTION);
+        if(status == JOptionPane.YES_OPTION) {
+            dispose();
+        }
     }//GEN-LAST:event_btSairActionPerformed
 
     /**

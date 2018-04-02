@@ -143,7 +143,7 @@ public class Produto extends javax.swing.JDialog {
                 btExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(btExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
+        getContentPane().add(btExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
 
         btAtualizar.setMnemonic('a');
         btAtualizar.setText("Atualizar");
@@ -152,7 +152,7 @@ public class Produto extends javax.swing.JDialog {
                 btAtualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        getContentPane().add(btAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
 
         btPesquisar.setMnemonic('p');
         btPesquisar.setText("Pesquisar");
@@ -348,10 +348,11 @@ public class Produto extends javax.swing.JDialog {
 
     
     //Métodos da classe
-    public void listar(){
+    private void listar(){
         try{
             dao = new ProdutoDao();
             List<Produtos> listarProdutos = dao.listarProdutos();
+            
             DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
             modelo.setNumRows(0);
             
@@ -364,7 +365,7 @@ public class Produto extends javax.swing.JDialog {
                 });
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao listar produto");
+            JOptionPane.showMessageDialog(null, "Erro ao listar Produtos");
         }
     }
     
