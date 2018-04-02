@@ -22,6 +22,7 @@ public class ProdutoDao {
     
     private final Connection conecta;
     private PreparedStatement stmt;
+    private String cmdsql;
     
     public ProdutoDao() {
         this.conecta = new ConnectionFactory().conecta();
@@ -30,8 +31,9 @@ public class ProdutoDao {
     
     public void cadastrarProduto(Produtos obj){
         try{
-            String cmdsql = "insert into produto(pro_nome, pro_descricao, pro_preco) values (?, ?, ?)";
+            cmdsql = "INSERT INTO produto(pro_nome, pro_descricao, pro_preco) VALUES (?, ?, ?)";
             stmt = conecta.prepareStatement(cmdsql);
+            
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getDescricao());
             stmt.setFloat(3, obj.getPreco());
@@ -47,8 +49,8 @@ public class ProdutoDao {
     public List<Produtos> listarProdutos(){
         try{
             List<Produtos> lista = new ArrayList<Produtos>();
-            String sql = "SELECT * FROM produto";
-            stmt = conecta.prepareStatement(sql);
+            cmdsql = "SELECT * FROM produto";
+            stmt = conecta.prepareStatement(cmdsql);
             ResultSet rs = stmt.executeQuery();
                                 //executeQuery() => busca informações do banco
             
@@ -71,14 +73,17 @@ public class ProdutoDao {
     
     public void alterarProduto(Produtos obj){
         try{
-            String cmdsql = "UPDATE produto set pro_nome=?, pro_descricao=?, pro_preco=? WHERE pro_codigo=?";
+            cmdsql = "UPDATE produto SET pro_nome=?, pro_descricao=?, pro_preco=? WHERE pro_codigo=?";
             stmt = conecta.prepareStatement(cmdsql);
+            
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getDescricao());
             stmt.setFloat(3, obj.getPreco());
             stmt.setInt(4, obj.getCodigo());
+            
             stmt.execute();
             stmt.close();
+            
         } catch(SQLException erro){
             throw new RuntimeException(erro);
         }
@@ -86,8 +91,9 @@ public class ProdutoDao {
     
     public void excluirProduto(Produtos obj){
         try{
-            String cmdsql = "delete from produto where pro_codigo=?";
+            cmdsql = "DELETE FROM produto WHERE pro_codigo=?";
             stmt = conecta.prepareStatement(cmdsql);
+            
             stmt.setInt(1, obj.getCodigo());
             stmt.execute();
             stmt.close();

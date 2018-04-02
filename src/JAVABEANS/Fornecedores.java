@@ -17,13 +17,13 @@ public class Fornecedores {
     private int numero;
     private String bairro;
     private String cidade;
-    private char uf;
+    private String uf;
     private String telefone;
 
     public Fornecedores() {
     }
 
-    public Fornecedores(int id, String nome, String rua, int numero, String bairro, String cidade, char uf, String telefone) {
+    public Fornecedores(int id, String nome, String rua, int numero, String bairro, String cidade, String uf, String telefone) {
         this.id = id;
         this.nome = nome;
         this.rua = rua;
@@ -82,11 +82,11 @@ public class Fornecedores {
         this.cidade = cidade;
     }
 
-    public char getUf() {
+    public String getUf() {
         return uf;
     }
 
-    public void setUf(char uf) {
+    public void setUf(String uf) {
         this.uf = uf;
     }
 
