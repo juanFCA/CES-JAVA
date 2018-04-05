@@ -54,6 +54,7 @@ public class Produto extends javax.swing.JDialog {
         btSair = new javax.swing.JButton();
         scrTabela = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200), new java.awt.Dimension(32767, 200));
 
         jLabel1.setText("jLabel1");
 
@@ -71,7 +72,7 @@ public class Produto extends javax.swing.JDialog {
         lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(153, 153, 153));
         lblTitulo.setText("TELA DE PRODUTO");
-        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         lblPreco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPreco.setText("Preço......:");
@@ -83,7 +84,7 @@ public class Produto extends javax.swing.JDialog {
                 txtCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 130, -1));
+        getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 160, -1));
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCodigo.setText("Código....:");
@@ -94,7 +95,7 @@ public class Produto extends javax.swing.JDialog {
                 txtPrecoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 80, -1));
+        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 90, -1));
 
         lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDescricao.setText("Descrição:");
@@ -105,7 +106,7 @@ public class Produto extends javax.swing.JDialog {
                 txtDescricaoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 290, -1));
+        getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 380, -1));
 
         lblNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblNome.setText("Nome......:");
@@ -116,7 +117,7 @@ public class Produto extends javax.swing.JDialog {
                 txtNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 290, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 380, -1));
 
         btSalvar.setMnemonic('s');
         btSalvar.setText("Salvar");
@@ -125,7 +126,7 @@ public class Produto extends javax.swing.JDialog {
                 btSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+        getContentPane().add(btSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 80, -1));
 
         btNovo.setMnemonic('N');
         btNovo.setText("Novo");
@@ -134,7 +135,7 @@ public class Produto extends javax.swing.JDialog {
                 btNovoActionPerformed(evt);
             }
         });
-        getContentPane().add(btNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        getContentPane().add(btNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 80, -1));
 
         btExcluir.setMnemonic('e');
         btExcluir.setText("Excluir");
@@ -143,7 +144,7 @@ public class Produto extends javax.swing.JDialog {
                 btExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(btExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
+        getContentPane().add(btExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 80, -1));
 
         btAtualizar.setMnemonic('a');
         btAtualizar.setText("Atualizar");
@@ -152,11 +153,11 @@ public class Produto extends javax.swing.JDialog {
                 btAtualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
+        getContentPane().add(btAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 80, -1));
 
         btPesquisar.setMnemonic('p');
         btPesquisar.setText("Pesquisar");
-        getContentPane().add(btPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, -1, -1));
+        getContentPane().add(btPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 80, -1));
 
         btSair.setMnemonic('r');
         btSair.setText("Sair");
@@ -165,7 +166,7 @@ public class Produto extends javax.swing.JDialog {
                 btSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, -1, -1));
+        getContentPane().add(btSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, 60, -1));
 
         scrTabela.setAutoscrolls(true);
 
@@ -184,7 +185,8 @@ public class Produto extends javax.swing.JDialog {
         });
         scrTabela.setViewportView(tabela);
 
-        getContentPane().add(scrTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, 170));
+        getContentPane().add(scrTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 460, 170));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 10, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,6 +226,10 @@ public class Produto extends javax.swing.JDialog {
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         // TODO add your handling code here:
+        txtCodigo.setText(null);
+        txtNome.setText(null);
+        txtDescricao.setText(null);
+        txtPreco.setText(null);
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
@@ -332,6 +338,7 @@ public class Produto extends javax.swing.JDialog {
     private javax.swing.JButton btPesquisar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescricao;
