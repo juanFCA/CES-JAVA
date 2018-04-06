@@ -5,7 +5,9 @@
  */
 package INTERFACE;
 
+import DAO.FornecedorDao;
 import DAO.ProdutoDao;
+import JAVABEANS.Fornecedores;
 import JAVABEANS.Produtos;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -17,7 +19,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Produto extends javax.swing.JDialog {
 
-    ProdutoDao dao;
+    ProdutoDao pDao;
+    FornecedorDao fDao;
     /**
      * Creates new form Produto
      */
@@ -55,6 +58,8 @@ public class Produto extends javax.swing.JDialog {
         scrTabela = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 200), new java.awt.Dimension(0, 200), new java.awt.Dimension(32767, 200));
+        lblFornecedor = new javax.swing.JLabel();
+        cbFornecedor = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -62,6 +67,9 @@ public class Produto extends javax.swing.JDialog {
         setTitle("Tela de Produto");
         setModal(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -75,8 +83,8 @@ public class Produto extends javax.swing.JDialog {
         getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         lblPreco.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblPreco.setText("Preço......:");
-        getContentPane().add(lblPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        lblPreco.setText("Preço........:");
+        getContentPane().add(lblPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         txtCodigo.setEnabled(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -87,19 +95,19 @@ public class Produto extends javax.swing.JDialog {
         getContentPane().add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 160, -1));
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblCodigo.setText("Código....:");
-        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        lblCodigo.setText("Código......:");
+        getContentPane().add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 90, -1));
+        getContentPane().add(txtPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 80, -1));
 
         lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblDescricao.setText("Descrição:");
-        getContentPane().add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        lblDescricao.setText("Descrição..:");
+        getContentPane().add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         txtDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +117,8 @@ public class Produto extends javax.swing.JDialog {
         getContentPane().add(txtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 380, -1));
 
         lblNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblNome.setText("Nome......:");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        lblNome.setText("Nome........:");
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,9 +183,18 @@ public class Produto extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Código", "Nome", "Descrição", "Preço"
+                "Código", "Nome", "Descrição", "Preço", "Fornecedor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabela.getTableHeader().setReorderingAllowed(false);
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaMouseClicked(evt);
@@ -187,6 +204,12 @@ public class Produto extends javax.swing.JDialog {
 
         getContentPane().add(scrTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 460, 170));
         getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 10, 370));
+
+        lblFornecedor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblFornecedor.setText("Fornecedor..:");
+        getContentPane().add(lblFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+
+        getContentPane().add(cbFornecedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,13 +233,18 @@ public class Produto extends javax.swing.JDialog {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         // TODO add your handling code here:
         try{
+            fDao = new FornecedorDao();
+            List<Fornecedores> lista = fDao.listarFornecedores();
+            
             Produtos obj = new Produtos();
             obj.setNome(txtNome.getText());
             obj.setDescricao(txtDescricao.getText());
             obj.setPreco(Float.parseFloat(txtPreco.getText()));
+            //Coloco -1 por causa do primeiro item da cb que é Escolha um Fornecedor
+            obj.setCodFornecedor(lista.get(cbFornecedor.getSelectedIndex()-1).getCodigo());
             
-            dao = new ProdutoDao();
-            dao.cadastrarProduto(obj);
+            pDao = new ProdutoDao();
+            pDao.cadastrarProduto(obj);
             
             JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
         } catch(Exception e){
@@ -235,15 +263,20 @@ public class Produto extends javax.swing.JDialog {
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         // TODO add your handling code here:
         try {
+            fDao = new FornecedorDao();
+            List<Fornecedores> lista = fDao.listarFornecedores();
+            
             Produtos obj = new Produtos();
             
             obj.setNome(txtNome.getText());
             obj.setDescricao(txtDescricao.getText());
             obj.setPreco(Float.parseFloat(txtPreco.getText()));
+            //Coloco -1 por causa do primeiro item da cb que é Escolha um Fornecedor
+            obj.setCodFornecedor(lista.get(cbFornecedor.getSelectedIndex()-1).getCodigo());
             obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
             
-            dao = new ProdutoDao();
-            dao.alterarProduto(obj);
+            pDao = new ProdutoDao();
+            pDao.alterarProduto(obj);
             
             JOptionPane.showMessageDialog(null, "Dados alterados com Sucesso");
         } catch (Exception e) {
@@ -271,23 +304,40 @@ public class Produto extends javax.swing.JDialog {
         txtNome.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
         txtDescricao.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
         txtPreco.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+        cbFornecedor.setSelectedItem(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
         try {
             Produtos obj = new Produtos();
-            
             obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
             
-            dao = new ProdutoDao();
-            dao.excluirProduto(obj);
+            pDao = new ProdutoDao();
+            pDao.excluirProduto(obj);
         
             JOptionPane.showMessageDialog(null,"Dados Excluidos com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao Excluir o Produto");
         }
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        cbFornecedor.addItem("Selecione um Fornecedor");
+        try {
+            fDao = new FornecedorDao();
+            List<Fornecedores> lista = fDao.listarFornecedores();
+            
+            for(Fornecedores forn:lista) {
+                cbFornecedor.addItem(forn.getNome());
+            }
+            
+            
+        } catch(Exception erro) {
+            System.out.println(erro);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -338,10 +388,12 @@ public class Produto extends javax.swing.JDialog {
     private javax.swing.JButton btPesquisar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvar;
+    private javax.swing.JComboBox<String> cbFornecedor;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescricao;
+    private javax.swing.JLabel lblFornecedor;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblPreco;
     private javax.swing.JLabel lblTitulo;
@@ -357,18 +409,20 @@ public class Produto extends javax.swing.JDialog {
     //Métodos da classe
     private void listar(){
         try{
-            dao = new ProdutoDao();
-            List<Produtos> listarProdutos = dao.listarProdutos();
-            
+            pDao = new ProdutoDao();
+            List<Produtos> listarProdutos = pDao.listarProdutos();
+          
             DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
             modelo.setNumRows(0);
             
             for(Produtos lp : listarProdutos){
+                String nomeFor;
                 modelo.addRow(new Object[]{
                    lp.getCodigo(),
                    lp.getNome(),
                    lp.getDescricao(),
-                   lp.getPreco()
+                   lp.getPreco(),
+                   nomeFornecedor(lp.getCodFornecedor())
                 });
             }
         }catch(Exception e){
@@ -376,5 +430,20 @@ public class Produto extends javax.swing.JDialog {
         }
     }
     
-    
+    private String nomeFornecedor(int codFornecedor) {
+        try {
+            fDao = new FornecedorDao();
+            List<Fornecedores> lista = fDao.listarFornecedores();
+           
+            for(Fornecedores forn:lista) {
+                if(forn.getCodigo() == codFornecedor) {
+                    return forn.getNome();
+                }
+            }
+        } catch(Exception erro) {
+            System.out.println(erro);
+        }     
+        
+        return null;
+    }
 }

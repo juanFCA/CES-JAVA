@@ -14,15 +14,17 @@ public class Produtos {
     private String nome;
     private String descricao;
     private float preco;
+    private int codFornecedor;
 
     public Produtos() {
     }
 
-    public Produtos(int codigo, String nome, String descricao, float preco) {
+    public Produtos(int codigo, String nome, String descricao, float preco, int codFornecedor) {
         this.codigo = codigo;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
+        this.codFornecedor = codFornecedor;
     }
     
     /**
@@ -79,5 +81,19 @@ public class Produtos {
      */
     public void setPreco(float preco) {
         this.preco = preco;
+    }
+
+    /**
+     * @return the codFornecedor
+     */
+    public int getCodFornecedor() {
+        return codFornecedor;
+    }
+
+    /**
+     * @param codFornecedor the codFornecedor to set
+     */
+    public void setCodFornecedor(int codFornecedor) {
+        this.codFornecedor = codFornecedor;
     }
 }

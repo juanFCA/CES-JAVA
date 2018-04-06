@@ -31,12 +31,13 @@ public class ProdutoDao {
     
     public void cadastrarProduto(Produtos obj){
         try{
-            cmdsql = "INSERT INTO produto(pro_nome, pro_descricao, pro_preco) VALUES (?, ?, ?)";
+            cmdsql = "INSERT INTO produto(pro_nome, pro_descricao, pro_preco, pro_for_codigo) VALUES (?, ?, ?, ?)";
             stmt = conecta.prepareStatement(cmdsql);
             
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getDescricao());
             stmt.setFloat(3, obj.getPreco());
+            stmt.setInt(4, obj.getCodFornecedor());
             
             stmt.execute();
             stmt.close();
@@ -59,7 +60,8 @@ public class ProdutoDao {
                 p.setCodigo(rs.getInt("pro_codigo"));
                 p.setNome(rs.getString("pro_nome"));
                 p.setDescricao(rs.getString("pro_descricao"));
-                p.setPreco(rs.getFloat("pro_preco"));//Float.parseFloat(rs.getString("pro_preco"));
+                p.setPreco(rs.getFloat("pro_preco"));
+                p.setCodFornecedor(rs.getInt("pro_for_codigo"));
                 
                 lista.add(p);
             }
@@ -73,13 +75,14 @@ public class ProdutoDao {
     
     public void alterarProduto(Produtos obj){
         try{
-            cmdsql = "UPDATE produto SET pro_nome=?, pro_descricao=?, pro_preco=? WHERE pro_codigo=?";
+            cmdsql = "UPDATE produto SET pro_nome=?, pro_descricao=?, pro_preco=?, pro_for_codigo=? WHERE pro_codigo=?";
             stmt = conecta.prepareStatement(cmdsql);
             
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getDescricao());
             stmt.setFloat(3, obj.getPreco());
-            stmt.setInt(4, obj.getCodigo());
+            stmt.setInt(4, obj.getCodFornecedor());
+            stmt.setInt(5, obj.getCodigo());
             
             stmt.execute();
             stmt.close();

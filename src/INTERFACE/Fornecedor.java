@@ -269,7 +269,7 @@ public class Fornecedor extends javax.swing.JDialog {
             obj.setUf(txtUF.getText());
             
             dao = new FornecedorDao();
-            dao.CadastrarFornecedor(obj);
+            dao.cadastrarFornecedor(obj);
             
             JOptionPane.showMessageDialog(null, "Cadastro realizado com Sucesso");
         } catch(Exception e) {
@@ -301,7 +301,7 @@ public class Fornecedor extends javax.swing.JDialog {
             obj.setBairro(txtBairro.getText());
             obj.setCidade(txtCidade.getText());
             obj.setUf(txtUF.getText());
-            obj.setId(Integer.parseInt(txtCodigo.getText()));
+            obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
               
             dao = new FornecedorDao();
             dao.alterarFornecedor(obj);
@@ -317,7 +317,7 @@ public class Fornecedor extends javax.swing.JDialog {
         try {
             Fornecedores obj = new Fornecedores();
             
-            obj.setId(Integer.parseInt(txtCodigo.getText()));
+            obj.setCodigo(Integer.parseInt(txtCodigo.getText()));
               
             dao = new FornecedorDao();
             dao.excluirFornecedor(obj);
@@ -338,7 +338,7 @@ public class Fornecedor extends javax.swing.JDialog {
             
             for(Fornecedores lf : listarFornecedores) {
                 modelo.addRow(new Object[]{
-                    lf.getId(),
+                    lf.getCodigo(),
                     lf.getNome(),
                     lf.getTelefone(),
                     lf.getRua(),

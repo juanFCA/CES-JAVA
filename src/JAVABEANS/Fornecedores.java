@@ -11,7 +11,7 @@ package JAVABEANS;
  */
 public class Fornecedores {
     
-    private int id;
+    private int codigo;
     private String nome;
     private String rua;
     private int numero;
@@ -23,8 +23,8 @@ public class Fornecedores {
     public Fornecedores() {
     }
 
-    public Fornecedores(int id, String nome, String rua, int numero, String bairro, String cidade, String uf, String telefone) {
-        this.id = id;
+    public Fornecedores(int codigo, String nome, String rua, int numero, String bairro, String cidade, String uf, String telefone) {
+        this.codigo = codigo;
         this.nome = nome;
         this.rua = rua;
         this.numero = numero;
@@ -34,12 +34,12 @@ public class Fornecedores {
         this.telefone = telefone;
     }
     
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {

@@ -28,7 +28,7 @@ public class FornecedorDao {
         this.conecta = new ConnectionFactory().conecta();
     }
     
-    public void CadastrarFornecedor(Fornecedores obj) {
+    public void cadastrarFornecedor(Fornecedores obj) {
         try {
             String cmdsql = "INSERT INTO fornecedor(for_nome, for_rua, for_numero, for_bairro, "
                     + "for_cidade, for_uf, for_telefone) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -59,7 +59,7 @@ public class FornecedorDao {
             
             while(rs.next()) {
                 Fornecedores f = new Fornecedores();
-                f.setId(rs.getInt("for_id"));
+                f.setCodigo(rs.getInt("for_codigo"));
                 f.setNome(rs.getString("for_nome"));
                 f.setRua(rs.getString("for_rua"));
                 f.setNumero(rs.getInt("for_numero"));
@@ -81,7 +81,7 @@ public class FornecedorDao {
     public void alterarFornecedor(Fornecedores obj) {
         try {
             cmdsql = "UPDATE fornecedor SET for_nome=?, for_rua=?, for_numero=?, for_bairro=?, "
-                    + "for_cidade=?, for_uf=?, for_telefone=? WHERE for_id=?";
+                    + "for_cidade=?, for_uf=?, for_telefone=? WHERE for_codigo=?";
             stmt = conecta.prepareStatement(cmdsql);
         
             stmt.setString(1, obj.getNome());
@@ -91,7 +91,7 @@ public class FornecedorDao {
             stmt.setString(5, obj.getCidade());
             stmt.setString(6, String.valueOf(obj.getUf()));
             stmt.setString(7, obj.getTelefone());
-            stmt.setInt(8, obj.getId());
+            stmt.setInt(8, obj.getCodigo());
             
             stmt.execute();
             stmt.close();            
@@ -103,10 +103,10 @@ public class FornecedorDao {
     
     public void excluirFornecedor(Fornecedores obj) {
         try {
-            cmdsql = "DELETE FROM fornecedor WHERE for_id=?";
+            cmdsql = "DELETE FROM fornecedor WHERE for_codigo=?";
             stmt = conecta.prepareStatement(cmdsql);
             
-            stmt.setInt(1, obj.getId());
+            stmt.setInt(1, obj.getCodigo());
             
             stmt.execute();
             stmt.close();

@@ -53,6 +53,7 @@ public class TPrincipal extends javax.swing.JFrame {
         mncadastro.setText("Cadastro");
 
         mnicliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        mnicliente.setMnemonic('c');
         mnicliente.setText("Cliente");
         mnicliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
