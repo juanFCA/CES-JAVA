@@ -7,7 +7,7 @@ package INTERFACE;
 
 /**
  *
- * @author Jonas
+ * @author Juan
  */
 public class BlocoNotas extends javax.swing.JFrame {
 

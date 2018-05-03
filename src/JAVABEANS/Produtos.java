@@ -7,7 +7,7 @@ package JAVABEANS;
 
 /**
  *
- * @author Jonas
+ * @author Juan
  */
 public class Produtos {
     private int codigo;

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Jonas
+ * @author Juan
  */
 public class Produto extends javax.swing.JDialog {
 
@@ -258,6 +258,7 @@ public class Produto extends javax.swing.JDialog {
         txtNome.setText(null);
         txtDescricao.setText(null);
         txtPreco.setText(null);
+        cbFornecedor.setSelectedIndex(0);
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed

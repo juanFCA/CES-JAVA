@@ -7,7 +7,7 @@ package INTERFACE;
 
 /**
  *
- * @author Jonas
+ * @author Juan
  */
 public class Cliente extends javax.swing.JDialog {
 
